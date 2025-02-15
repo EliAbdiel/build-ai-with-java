@@ -18,7 +18,7 @@ public class RecipeController {
     }
 
     @GetMapping("/generate-recipe")
-    public ResponseEntity<Answer> generateRecipe(@RequestParam String question) {
-        return recipeGenerator.generateRecipe(new Question(question));
+    public ResponseEntity<Answer> generateRecipe(@RequestParam String question, @RequestParam String foodName) {
+        return recipeGenerator.generateRecipe(new Question(question, foodName));
     }
 }

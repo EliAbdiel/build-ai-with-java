@@ -13,20 +13,27 @@ public class RecipeGeneratorImpl implements RecipeGenerator {
 
     private ChatClient chatClient;
 
+    private String recipeTemplate = """
+            Answer for {foodName} for {question}?
+            """;
+
     public RecipeGeneratorImpl(ChatClient chatClient) {
         this.chatClient = chatClient;
     }
 
     @Override
     public ResponseEntity<Answer> generateRecipe(Question question) {
-        Answer answer = new Answer(getMessage(question.getQuestion()).getResult().getOutput().getContent());
+        Answer answer = new Answer(getMessage(question).getResult().getOutput().getContent());
         return ResponseEntity.ok(answer);
     }
 
-    private ChatResponse getMessage(String message) {
+    private ChatResponse getMessage(Question question) {
         try {
             return this.chatClient.prompt()
-                    .user(message)
+                    .user(userSpec -> userSpec.text(recipeTemplate)
+                            .param("foodName", question.getFoodName())
+                            .param("question", question.getQuestion())
+                    )
                     .call()
                     .chatResponse();
         } catch (Exception e) {
