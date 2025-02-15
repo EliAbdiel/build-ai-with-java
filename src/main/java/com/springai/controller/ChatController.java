@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,8 +20,8 @@ public class ChatController {
     }
 
     @GetMapping("/chat")
-    public ResponseEntity<String> chat() {
+    public ResponseEntity<String> chat(@RequestParam String subject, @RequestParam String tone, @RequestParam String message) {
         logger.info("Generating chat response from ChatController");
-        return this.chatService.generateChatResponse();
+        return this.chatService.generateChatResponse(subject, tone, message);
     }
 }

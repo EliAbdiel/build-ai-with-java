@@ -18,13 +18,17 @@ public class ChatService {
         this.chatClient = chatClient;
     }
 
-    public ResponseEntity<String> generateChatResponse() {
+    public ResponseEntity<String> generateChatResponse(String subject, String tone, String message) {
         logger.info("Generating chat response from ChatService");
         try {
             var result = chatClient
                     //.prompt(new Prompt("The Fibonacci Number Algorithm"))
                     .prompt()
-                    .user("Explain the Fibonacci Number Algorithm")
+                    .system(sp -> sp
+                            .param("subject", subject)
+                            .param("tone", tone)
+                    )
+                    .user(message)
                     .call()
                     .chatResponse()
                     .getResult()
