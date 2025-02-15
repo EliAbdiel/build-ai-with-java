@@ -19,7 +19,8 @@ public class Config {
 
     @Bean
     ChatClient chatClient(ChatClient.Builder builder) {
-        return builder.defaultSystem(resource)
-                .build();
+        //return builder.defaultSystem(resource)
+        //        .build();
+        return builder.build();
     }
 }
