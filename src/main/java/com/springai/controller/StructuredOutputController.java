@@ -51,14 +51,15 @@ public class StructuredOutputController {
     }
 
     @GetMapping("/response-as-map")
-    public Map<String, Object> getResponseAsMap(@RequestParam String message) {
+    public ResponseEntity<?> getResponseAsMap(@RequestParam String message) {
         try {
-            return chatClient.prompt()
-                        .user(message)
-                        .call()
-                    .entity(new ParameterizedTypeReference<Map<String, Object>>() {});
+            var output = chatClient.prompt()
+                                .user(message)
+                                .call()
+                            .entity(new ParameterizedTypeReference<Map<String, Object>>() {});
+            return ResponseEntity.ok(output);
         } catch (Exception e) {
-            throw new RuntimeException(e.getMessage());
+            return ResponseEntity.badRequest().body("error: " + e.getMessage());
         }
     }
 }
