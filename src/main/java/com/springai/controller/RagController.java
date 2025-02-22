@@ -2,18 +2,17 @@ package com.springai.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
-import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class RagExample {
+public class RagController {
 
     private final ChatClient chatClient;
 
-    public RagExample(ChatClient.Builder chatClient, VectorStore vectorStore) {
+    public RagController(ChatClient.Builder chatClient, VectorStore vectorStore) {
         this.chatClient = chatClient
                 .defaultAdvisors(
                         new QuestionAnswerAdvisor(vectorStore))
@@ -24,7 +23,7 @@ public class RagExample {
     public ResponseEntity<String> getResponse() {
         try {
             var response = chatClient.prompt()
-                    .user("Give me a information about YieldMax")
+                    .user("Give me information about online store Easy Shopping")
                     .call()
                     .chatResponse()
                     .getResult().getOutput().getContent();
