@@ -25,8 +25,8 @@ public class Config {
     @Value("classpath:input.txt")
     Resource resource;
 
-    @Value("classpath:newproducts.txt")
-    Resource newProductsResource;
+     @Value("classpath:newproducts.txt")
+     Resource newProductsResource;
 
     String input = """
             You are an AI assistant that specializes in {subject}.
@@ -58,4 +58,5 @@ public class Config {
         }
         return simpleVectorStore;
     }
+
 }
