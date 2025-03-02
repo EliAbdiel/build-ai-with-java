@@ -22,11 +22,11 @@ public class Config {
 
     Logger logger = LoggerFactory.getLogger(Config.class);
 
-    @Value("classpath:input.txt")
-    Resource resource;
+    //@Value("classpath:input.txt")
+    //Resource resource;
 
-     @Value("classpath:newproducts.txt")
-     Resource newProductsResource;
+     //@Value("classpath:newproducts.txt")
+     //Resource newProductsResource;
 
     String input = """
             You are an AI assistant that specializes in {subject}.
@@ -40,23 +40,23 @@ public class Config {
         return builder.build();
     }
 
-    @Bean
-    SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel) {
-        SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
-        File file = new File("C:\\Users\\NETCOM7\\Desktop\\code\\spring\\springai-quickstart\\src\\main\\resources\\newproducts.json");
-        if (file.exists()) {
-            logger.info("File exists");
-            simpleVectorStore.load(file);
-        } else {
-            TextReader textReader = new TextReader(newProductsResource);
-            textReader.getCustomMetadata().put("filename", "newproducts.txt");
-            List<Document> documents = textReader.get();
-            TextSplitter textSplitter = new TokenTextSplitter();
-            List<Document> splitterDocuments = textSplitter.apply(documents);
-            simpleVectorStore.add(splitterDocuments);
-            simpleVectorStore.save(file);
-        }
-        return simpleVectorStore;
-    }
+//    @Bean
+//    SimpleVectorStore simpleVectorStore(EmbeddingModel embeddingModel) {
+//        SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(embeddingModel).build();
+//        File file = new File("C:\\Users\\NETCOM7\\Desktop\\code\\spring\\springai-quickstart\\src\\main\\resources\\newproducts.json");
+//        if (file.exists()) {
+//            logger.info("File exists");
+//            simpleVectorStore.load(file);
+//        } else {
+//            TextReader textReader = new TextReader(newProductsResource);
+//            textReader.getCustomMetadata().put("filename", "newproducts.txt");
+//            List<Document> documents = textReader.get();
+//            TextSplitter textSplitter = new TokenTextSplitter();
+//            List<Document> splitterDocuments = textSplitter.apply(documents);
+//            simpleVectorStore.add(splitterDocuments);
+//            simpleVectorStore.save(file);
+//        }
+//        return simpleVectorStore;
+//    }
 
 }
