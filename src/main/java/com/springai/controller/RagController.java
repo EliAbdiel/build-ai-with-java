@@ -1,15 +1,15 @@
-//package com.springai.controller;
-//
+package com.springai.controller;
+
 //import org.springframework.ai.chat.client.ChatClient;
 //import org.springframework.ai.chat.client.advisor.QuestionAnswerAdvisor;
 //import org.springframework.ai.vectorstore.VectorStore;
 //import org.springframework.http.ResponseEntity;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RestController;
-//
+
 //@RestController
-//public class RagController {
-//
+public class RagController {
+
 //    private final ChatClient chatClient;
 //
 //    public RagController(ChatClient.Builder chatClient, VectorStore vectorStore) {
@@ -32,4 +32,4 @@
 //            return ResponseEntity.badRequest().body("error: " + e.getMessage());
 //        }
 //    }
-//}
+}

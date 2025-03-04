@@ -1,5 +1,5 @@
-//package com.springai.controller;
-//
+package com.springai.controller;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 //import org.springframework.ai.document.Document;
@@ -12,14 +12,14 @@
 //import org.springframework.core.io.Resource;
 //import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.RestController;
-//
+
 //import java.io.IOException;
 //import java.nio.file.Files;
 //import java.util.List;
 //import java.util.stream.Collectors;
-//
+
 //@RestController
-//public class ChromaController {
+public class ChromaController {
 //
 //    Logger logger = LoggerFactory.getLogger(ChromaController.class);
 //
@@ -61,4 +61,4 @@
 //                );
 //        return results.toString();
 //    }
-//}
+}

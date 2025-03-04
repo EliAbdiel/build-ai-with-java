@@ -1,5 +1,5 @@
-//package com.springai.config;
-//
+package com.springai.config;
+
 //import org.springframework.ai.chroma.vectorstore.ChromaApi;
 //import org.springframework.ai.chroma.vectorstore.ChromaVectorStore;
 //import org.springframework.ai.embedding.EmbeddingModel;
@@ -8,10 +8,10 @@
 //import org.springframework.context.annotation.Configuration;
 //import org.springframework.http.client.SimpleClientHttpRequestFactory;
 //import org.springframework.web.client.RestClient;
-//
+
 //@Configuration
-//public class ChromaConfig {
-//
+public class ChromaConfig {
+
 //    @Bean
 //    public RestClient.Builder builder() {
 //        return RestClient.builder().requestFactory(new SimpleClientHttpRequestFactory());
@@ -31,4 +31,4 @@
 //                .initializeSchema(true)
 //                .build();
 //    }
-//}
+}
